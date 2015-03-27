@@ -6,7 +6,7 @@ Before=docker.service
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/local/bin/vxlan.init
+ExecStart=/usr/local/bin/vxlan.init start
 User=root
 Group=root
  
