@@ -6,6 +6,7 @@ systemctl enable vxlan.service
 systemctl start vxlan.service
 
 mkdir /etc/vxlan
+touch /etc/vxlan/all.ip
 cat >/etc/vxlan/vxlan0.conf <<EOF
 vInterface = vxlan0
 Id = 10
