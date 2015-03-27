@@ -55,7 +55,7 @@ init_vxlan(){
         exe_log "$ipcmd link set $brdev address $vmac"
         
         exe_log "$ipcmd addr add $addr broadcast $BROADCAST dev $brdev" 
-        exe_log "$ipcmd link add $vdev type vxlan id $id ttl 4dev $rdev"
+        exe_log "$ipcmd link add $vdev type vxlan id $id ttl 4 dev $rdev"
         vmac=`$perlcmd -e  'print sprintf("00:16:3e:%2.2x:%2.2x:%2.2x", rand()*255, rand()*255, rand()*255)'`
         exe_log "$ipcmd link set $vdev address $vmac"
         
@@ -64,7 +64,7 @@ init_vxlan(){
         exe_log "$ipcmd link set $vdev up"
                                                             
     else
-        exe_log "$ipcmd link add $vdev type vxlan id $id ttl 4dev $rdev"
+        exe_log "$ipcmd link add $vdev type vxlan id $id ttl 4 dev $rdev"
         vmac=`$perlcmd -e  'print sprintf("00:16:3e:%2.2x:%2.2x:%2.2x", rand()*255, rand()*255, rand()*255)'`
         exe_log "$ipcmd link set $vdev address $vmac"
         exe_log "$ipcmd addr add $addr broadcast $BROADCAST dev $vdev" 
