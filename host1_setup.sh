@@ -5,6 +5,7 @@ chmod 0700 /usr/local/bin/vxlan.init
 systemctl enable vxlan.service
 systemctl start vxlan.service
 
+mkdir /etc/vxlan
 cat >/etc/vxlan/vxlan0.conf <<EOF
 vInterface = vxlan0
 Id = 10
