@@ -1,14 +1,16 @@
 [Unit]
 Description=pre docker
-Requires=docker.service
+Requires=network.target
+After=network.target
 Before=docker.service
- 
+
 [Service]
 Type=oneshot
 RemainAfterExit=yes
 ExecStart=/usr/local/bin/vxlan.init start
 User=root
 Group=root
- 
+
 [Install]
-WantedBy=multi-user.target 
+WantedBy=multi-user.target
+
