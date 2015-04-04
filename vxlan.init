@@ -50,7 +50,7 @@ init_vxlan(){
         brdev=br${vdev}
         exe_log "$brctlcmd addbr $brdev"
         exe_log "$ipcmd link add $vdev type vxlan id $id ttl 4 dev $rdev"
-        sleep 2
+        sleep 3
         #create virtual mac addr ref by http://d.ballade.jp/2008/03/vif-and-mac-address.html
         vmac=`$perlcmd -e  'print sprintf("00:16:3e:%2.2x:%2.2x:%2.2x", rand()*255, rand()*255, rand()*255)'`
         exe_log "$ipcmd link set $brdev address $vmac"
@@ -72,7 +72,7 @@ init_vxlan(){
         exe_log "$ipcmd addr add $addr broadcast $BROADCAST dev $vdev" 
         exe_log "$ipcmd link set $vdev up"
     fi
-    sleep 2
+    sleep 3
   }
 }
 
