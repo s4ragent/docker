@@ -1,0 +1,14 @@
+[Unit]
+Description=initloop pre docker
+Requires=docker.service
+Before=docker.service
+ 
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/bin/initloop.sh
+User=root
+Group=root
+ 
+[Install]
+WantedBy=multi-user.target 
