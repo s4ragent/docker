@@ -25,8 +25,4 @@ Address = 192.168.100.12/24
 Mode=bridge
 EOF
 
-cp ./initloop.service /etc/systemd/system/initloop.service
-cp ./initloop.sh /usr/local/bin/initloop.sh
-chmod 0700 /usr/local/bin/initloop.sh
-systemctl enable initloop.service
-systemctl start initloop.service
+
