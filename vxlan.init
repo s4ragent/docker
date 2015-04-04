@@ -72,7 +72,6 @@ init_vxlan(){
         exe_log "$ipcmd addr add $addr broadcast $BROADCAST dev $vdev" 
         exe_log "$ipcmd link set $vdev up"
     fi
-    sleep 3
   }
 }
 
