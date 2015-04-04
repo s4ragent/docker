@@ -46,7 +46,7 @@ init_vxlan(){
   [ -n "$addr" ] && \
   [ -n "$BROADCAST" ] && \
   { 
-    if [ $mode == "bridge"]; then
+    if [ $mode == "bridge" ]; then
         brdev=br${vdev}
         exe_log "$brctlcmd addbr $brdev"
 
@@ -80,7 +80,7 @@ stop_vxlan(){
   [ -n "$addr" ] && \
   [ -n "$BROADCAST" ] && \
   { 
-      if [ $mode == "bridge"]; then
+      if [ $mode == "bridge" ]; then
         brdev=br${vdev}
         exe_log "$ipcmd link set $brdev down"
         exe_log "$brctlcmd delbr $brdev"
