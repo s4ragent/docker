@@ -92,23 +92,23 @@ export LC_ALL=ja_JP.UTF-8
 EOF
 
 ##create ssh key####
-mkdir -p /work/
-ssh-keygen -t rsa -P "" -f /work/id_rsa
-
-for user in oracle grid
-do
-        mkdir /home/$user/.ssh
-        cat /work/id_rsa.pub >> /home/$user/.ssh/authorized_keys
-        cp /work/id_rsa /home/$user/.ssh/
-        for i in `seq 1 4`; do
-             ssh-keyscan -t rsa localhost | sed "s/localhost/node${i},192.168.0.10${i}/" >> /work/known_hosts
-        done
-        cp /work/known_hosts /home/$user/.ssh
-        chown -R ${user}.oinstall /home/$user/.ssh
-        chmod 700 /home/$user/.ssh
-        chmod 600 /home/$user/.ssh/*
-done
-rm -rf /work
+#mkdir -p /work/
+#ssh-keygen -t rsa -P "" -f /work/id_rsa
+#
+#for user in oracle grid
+#do
+#        mkdir /home/$user/.ssh
+#        cat /work/id_rsa.pub >> /home/$user/.ssh/authorized_keys
+#        cp /work/id_rsa /home/$user/.ssh/
+#        for i in `seq 1 4`; do
+#             ssh-keyscan -t rsa localhost | sed "s/localhost/node${i},192.168.0.10${i}/" >> /work/known_hosts
+#        done
+#        cp /work/known_hosts /home/$user/.ssh
+#        chown -R ${user}.oinstall /home/$user/.ssh
+#        chmod 700 /home/$user/.ssh
+#        chmod 600 /home/$user/.ssh/*
+#done
+#rm -rf /work
 
 #enable non root user ping
 chmod u+s /usr/bin/ping
