@@ -10,6 +10,7 @@ docker exec -i racbase /bin/bash -c 'chmod 0700 /usr/local/bin/prenetwork.sh'
 docker exec -i racbase /bin/bash -c 'systemctl enable prenetwork.service'
 docker exec -i racbase /bin/bash -c 'systemctl start prenetwork.service'
 docker stop racbase
-#docker tag user/example-image gcr.io/your-project-id/example-image
+docker commit test/racbase
+#docker tag test/racbase gcr.io/your-project-id/example-image
 #gcloud preview docker push gcr.io/your-project-id/example-image
 
