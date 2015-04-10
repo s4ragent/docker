@@ -1,5 +1,7 @@
 #!/bin/bash
 #gcloud preview docker pull gcr.io/your-project-id/example-image
+yum -y install docker bridge-utils qemu
+yum -y update device-mapper
 mkdir -p /docker/node1
 mkdir -p /docker/media
 qemu-img create -f raw -o size=20G /docker/node1/orahome.img
