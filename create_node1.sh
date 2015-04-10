@@ -1,11 +1,17 @@
 #!/bin/bash
+#gcloud preview docker pull gcr.io/your-project-id/example-image
 mkdir -p /docker/node1
 qemu-img create -f raw -o size=20G /docker/node1/orahome.img
-mkfs.ext4 /docker/node1/orahome.img
-losetup /dev/loop31 /docker/node1/orahome.img
-
-#gcloud preview docker pull gcr.io/your-project-id/example-image
-docker run --privileged=true -d -h node1.public --name node1 --dns=127.0.0.1 /lib/modules:/lib/modules test:racbase /sbin/init
-docker exec -i racbase /bin/bash -c 'cat >/root/create_oraclehome.sh' <./create_oraclehome.sh
-docker exec -i racbase mount -t ext4 /dev/loop31 /u01
-docker exec -i racbase sh /root/create_oraclehome.sh
+mkfs.ext4 -F /docker/node1/orahome.img
+sh ./losetup.sh /dev/loop31 /docker/node1/orahome.img
+docker run --privileged=true -d -h node1.public --name node1 --dns=127.0.0.1 -v /lib/modules:/lib/modules test:racbase /sbin/init
+sh ./docker_ip.sh node1 brvxlan0 eth1 192.168.0.101/24
+sh ./docker_ip.sh node1 brvxlan1 eth2 192.168.100.101/24
+sleep 35
+docker exec -i node1 /bin/bash -c 'mkdir /u01'
+docker exec -i node1 /bin/bash -c 'echo "/dev/loop31 /u01    ext4    defaults   0 0" >> /etc/fstab'
+docker exec -i node1 /bin/bash -c 'mount -a'
+docker exec -i node1 /bin/bash -c 'cat >/root/create_oraclehome.sh' <./create_oraclehome.sh
+docker exec -i node1 sh /root/create_oraclehome.sh
+docker exec -i node1 /bin/bash -c 'cat >/root/nfsclient.sh' <./nfsclient.sh
+docker exec -i node1 sh /root/nfsclient.sh
