@@ -51,3 +51,4 @@ fs.aio-max-nr = 1048576
 # oracle-rdbms-server-12cR1-preinstall setting for net.ipv4.ip_local_port_range is 9000 65500
 net.ipv4.ip_local_port_range = 9000 65500
 EOF
+sysctl -p
