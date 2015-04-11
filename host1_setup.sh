@@ -1,2 +1,2 @@
 #!/bin/bash
-sh ./host_setup.sh 1
+sh ./_host_setup.sh 1
