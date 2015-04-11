@@ -13,5 +13,6 @@
 #docker exec -i nfs /bin/bash -c 'cat >/root/nfsserver.sh' <./nfsserver.sh
 #docker exec -i nfs sh /root/nfsserver.sh
 
+yum -y install nfs-utils
 ip addr add 192.168.0.10/24 dev brvxlan0
 sh ./nfsserver.sh
