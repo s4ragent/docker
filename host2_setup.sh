@@ -38,3 +38,22 @@ List = /etc/vxlan/all.ip
 Address = 192.168.100.11/24
 Mode=bridge
 EOF
+cat >>/etc/sysctl.conf <<EOF
+# oracle-rdbms-server-12cR1-preinstall setting for net.core.rmem_default is 262144
+net.core.rmem_default = 262144
+
+# oracle-rdbms-server-12cR1-preinstall setting for net.core.rmem_max is 4194304
+net.core.rmem_max = 4194304
+
+# oracle-rdbms-server-12cR1-preinstall setting for net.core.wmem_default is 262144
+net.core.wmem_default = 262144
+
+# oracle-rdbms-server-12cR1-preinstall setting for net.core.wmem_max is 1048576
+net.core.wmem_max = 1048576
+
+# oracle-rdbms-server-12cR1-preinstall setting for fs.aio-max-nr is 1048576
+fs.aio-max-nr = 1048576
+
+# oracle-rdbms-server-12cR1-preinstall setting for net.ipv4.ip_local_port_range is 9000 65500
+net.ipv4.ip_local_port_range = 9000 65500
+EOF
