@@ -24,7 +24,7 @@ vInterface = vxlan0
 Id = 10
 Ether = eth0
 List = /etc/vxlan/all.ip
-Address = 192.168.0.13/24
+Address = 192.168.0.1${1}/24
 Mode=bridge
 EOF
 
@@ -33,7 +33,7 @@ vInterface = vxlan1
 Id = 11
 Ether = eth0
 List = /etc/vxlan/all.ip
-Address = 192.168.100.13/24
+Address = 192.168.100.1${1}/24
 Mode=bridge
 EOF
 
