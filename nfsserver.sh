@@ -1,4 +1,5 @@
 #!/bin/sh
+yum -y install nfs-utils
 mkdir -p /nfs/oracleasm
 echo "/nfs/oracleasm *(rw,sync,no_root_squash)" >> /etc/exports
 chmod -R 775 /nfs
