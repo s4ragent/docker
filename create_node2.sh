@@ -13,5 +13,5 @@ docker exec -i node2 /bin/bash -c 'echo "/dev/loop32 /u01    ext4    defaults   
 docker exec -i node2 /bin/bash -c 'mount -a'
 docker exec -i node2 /bin/bash -c 'cat >/root/create_oraclehome.sh' <./create_oraclehome.sh
 docker exec -i node2 sh /root/create_oraclehome.sh
-docker exec -i node2 /bin/bash -c 'cat >/root/nfsclient.sh' <./nfsclient.sh
-docker exec -i node2 sh -x /root/nfsclient.sh
+#docker exec -i node2 /bin/bash -c 'cat >/root/nfsclient.sh' <./nfsclient.sh
+#docker exec -i node2 sh -x /root/nfsclient.sh
