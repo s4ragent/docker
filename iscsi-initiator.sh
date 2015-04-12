@@ -14,3 +14,4 @@ systemctl enable iscsid
 echo "plese this command "
 echo "iscsiadm -m discovery -t sendtargets -p <targetip>"
 echo "iscsiadm -m node --login"
+echo "losetup /dev/loop30 /dev/sdb"
