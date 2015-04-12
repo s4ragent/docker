@@ -4,6 +4,7 @@ mkdir -p /docker/node2
 qemu-img create -f raw -o size=20G /docker/node2/orahome.img
 mkfs.ext4 -F /docker/node2/orahome.img
 sh ./losetup.sh /dev/loop32 /docker/node2/orahome.img
+sh ./losetup.sh /dev/loop30 /dev/sdb
 docker run --privileged=true -d -h node2.public --name node2 --dns=127.0.0.1 -v /lib/modules:/lib/modules test:racbase /sbin/init
 sh ./docker_ip.sh node2 brvxlan0 eth1 192.168.0.102/24
 sh ./docker_ip.sh node2 brvxlan1 eth2 192.168.100.102/24
