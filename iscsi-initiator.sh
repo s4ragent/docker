@@ -11,7 +11,7 @@ EOF
 
 systemctl start iscsid
 systemctl enable iscsid
-echo "plese this command "
-echo "iscsiadm -m discovery -t sendtargets -p <targetip>"
-echo "iscsiadm -m node --login"
-echo "losetup /dev/loop30 /dev/sdb"
+
+iscsiadm -m discovery -t sendtargets -p 192.168.0.10
+iscsiadm -m node --login
+losetup /dev/loop30 /dev/sdb
