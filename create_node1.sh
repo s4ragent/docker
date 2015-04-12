@@ -28,3 +28,5 @@ docker exec -i node1 /bin/bash -c 'cat >/home/oracle/db_install.sh' <./db_instal
 docker exec -i node1 /bin/bash -c 'chown oracle.oinstall /home/oracle/db*'
 
 docker exec -i node1 /bin/bash -c 'cat >/root/setup_ssh.expect' <./setup_ssh.expect
+docker exec -i node1 /bin/bash -c '/home/oracle/dbca.sh' <./dbca.sh
+docker exec -i node1 /bin/bash -c 'chown oracle.oinstall /home/oracle/dbca.sh'
