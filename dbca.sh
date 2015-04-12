@@ -1,0 +1,2 @@
+#!/bin/bash
+dbca -silent -createDatabase -templateName General_Purpose.dbc -gdbName ORCL -sid ORCL -SysPassword oracle123 -SystemPassword oracle123 -emConfiguration NONE -redoLogFileSize 10 -recoveryAreaDestination CRS -storageType ASM -asmSysPassword asm12345 -diskGroupName CRS -characterSet AL32UTF8 -nationalCharacterSet AL16UTF16 -totalMemory 2400 -databaseType MULTIPURPOSE -nodelist node1,node2
