@@ -5,8 +5,7 @@ mkdir -p /docker/media
 qemu-img create -f raw -o size=20G /docker/node1/orahome.img
 mkfs.ext4 -F /docker/node1/orahome.img
 sh ./losetup.sh /dev/loop31 /docker/node1/orahome.img
-sh ./losetup.sh /dev/loop30 /dev/sdb
-dd if=/dev/zero of=/dev/loop30 bs=1M count=100
+dd if=/dev/zero of=/dev/sdb1 bs=1M count=100
 docker run --privileged=true -d -h node1.public --name node1 --dns=127.0.0.1 -v /lib/modules:/lib/modules -v /docker/media:/media test:racbase /sbin/init
 sh ./docker_ip.sh node1 brvxlan0 eth1 192.168.0.101/24
 sh ./docker_ip.sh node1 brvxlan1 eth2 192.168.100.101/24
