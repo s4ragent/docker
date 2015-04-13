@@ -13,8 +13,9 @@ systemctl stop iscsi
 systemctl stop iscsid
 systemctl start iscsid
 systemctl enable iscsid
-
-iscsiadm -m discovery -t sendtargets -p 192.168.0.10
+echo -n "Enter iSCSI target IP : "
+read ip
+iscsiadm -m discovery -t sendtargets -p $ip
 iscsiadm -m node --login
 sleep 10
 
