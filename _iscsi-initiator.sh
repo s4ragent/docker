@@ -23,5 +23,5 @@ sfdisk /dev/sdb << EOF
 ,,83
 EOF
 
-./losetup.sh /dev/loop30 /dev/sdb1
+sh ./losetup.sh /dev/loop30 /dev/sdb1
 echo "/sbin/losetup /dev/loop30 /dev/sdb1" >> /usr/local/bin/initloop.sh 
