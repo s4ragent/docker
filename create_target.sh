@@ -15,3 +15,5 @@ targetcli /iscsi/iqn.2015-06.org.jpoug:crs.target00/tpg1/acls/iqn.2015-06.org.jp
 targetcli /iscsi/iqn.2015-06.org.jpoug:crs.target00/tpg1/acls/iqn.2015-06.org.jpoug:node2 set auth password=oracle123
 targetcli saveconfig
 systemctl enable target
+echo "iSCSI target IP is"
+ip a show eth0 | grep "inet " | awk -F '[/ ]' '{print $6}'
