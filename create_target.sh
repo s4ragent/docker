@@ -1,7 +1,6 @@
 #!/bin/bash
 #http://www.server-world.info/query?os=CentOS_7&p=iscsi
 yum -y install targetcli
-ip addr add 192.168.0.10/24 dev brvxlan0
 mkdir /iscsi_disks
 targetcli backstores/fileio create disk01 /iscsi_disks/disk01.img 20G
 targetcli backstores/fileio create disk02 /iscsi_disks/disk02.img 20G
