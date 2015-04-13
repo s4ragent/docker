@@ -9,7 +9,7 @@ ORAINVENTORY=/u01/app/oraInventory
 MOUNT_PATH=/u01
 MEDIA_PATH=/media
 
-yum --enablerepo=ol7_addons install oracle-rdbms-server-12cR1-preinstall tar netstat sleep expect -y
+yum --enablerepo=ol7_addons install oracle-rdbms-server-12cR1-preinstall tar net-tools sleep expect -y
 yum reinstall -y glibc-common
 
 ###delete user ###
