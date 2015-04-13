@@ -14,6 +14,7 @@ systemctl enable iscsid
 
 iscsiadm -m discovery -t sendtargets -p 192.168.0.10
 iscsiadm -m node --login
+sleep 10
 
 sfdisk /dev/sdb << EOF
 ,,83
