@@ -19,4 +19,4 @@ sfdisk /dev/sdb << EOF
 ,,83
 EOF
 
-dd if=/dev/zero of=/dev/sdb1 bs=1M count=100
+./losetup.sh /dev/loop30 /dev/sdb1
