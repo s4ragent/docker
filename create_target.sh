@@ -15,3 +15,4 @@ targetcli /iscsi/iqn.2015-06.org.jpoug:crs.target00/tpg1/acls/iqn.2015-06.org.jp
 targetcli /iscsi/iqn.2015-06.org.jpoug:crs.target00/tpg1/acls/iqn.2015-06.org.jpoug:node1 set auth password=oracle123 
 targetcli /iscsi/iqn.2015-06.org.jpoug:crs.target00/tpg1/acls/iqn.2015-06.org.jpoug:node2 set auth password=oracle123
 targetcli saveconfig
+systemctl enable target
