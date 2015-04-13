@@ -1,5 +1,5 @@
 #!/bin/bash
-sfdisk /dev/sda << EOF
+sfdisk -f /dev/sda << EOF
 16,,83
 EOF
 reboot
