@@ -9,6 +9,8 @@ node.session.auth.username = oracle
 node.session.auth.password = oracle123
 EOF
 
+systemctl stop iscsi
+systemctl stop iscsid
 systemctl start iscsid
 systemctl enable iscsid
 
