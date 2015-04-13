@@ -6,9 +6,9 @@ qemu-img create -f raw -o size=20G /docker/node1/orahome.img
 mkfs.ext4 -F /docker/node1/orahome.img
 sh ./losetup.sh /dev/loop31 /docker/node1/orahome.img
 dd if=/dev/zero of=/dev/loop30 bs=1M count=100
-docker run --privileged=true -d -h node1.public --name node1 --dns=127.0.0.1 -v /lib/modules:/lib/modules -v /docker/media:/media test:racbase /sbin/init
-sh ./docker_ip.sh node1 brvxlan0 eth1 192.168.0.101/24
-sh ./docker_ip.sh node1 brvxlan1 eth2 192.168.100.101/24
+docker run --privileged=true -d -h node1.public --net=none --name node1 --dns=127.0.0.1 -v /lib/modules:/lib/modules -v /docker/media:/media test:racbase /sbin/init
+sh ./docker_ip.sh node1 brvxlan0 eth0 192.168.0.101/24
+sh ./docker_ip.sh node1 brvxlan1 eth1 192.168.100.101/24
 sleep 35
 docker exec -i node1 /bin/bash -c 'mkdir /u01'
 docker exec -i node1 /bin/bash -c 'echo "/dev/loop31 /u01    ext4    defaults   0 0" >> /etc/fstab'
