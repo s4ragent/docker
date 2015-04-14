@@ -1,5 +1,5 @@
 #!/bin/bash
-yum -y install iscsi-initiator-utils
+yum -y install iscsi-initiator-utils parted
 #iscsiadm -m discovery -t sendtargets -p
 #iscsiadm -m node --login
 echo "InitiatorName=iqn.2015-06.org.jpoug:node${1}" > /etc/iscsi/initiatorname.iscsi
@@ -19,9 +19,6 @@ iscsiadm -m discovery -t sendtargets -p $ip
 iscsiadm -m node --login
 sleep 10
 
-sfdisk /dev/sdb << EOF
-,,83
-EOF
-
+parted /dev/sdb mkpart primary 0% 100%
 sh ./losetup.sh /dev/loop30 /dev/sdb1
 echo "/sbin/losetup /dev/loop30 /dev/sdb1" >> /usr/local/bin/initloop.sh 
