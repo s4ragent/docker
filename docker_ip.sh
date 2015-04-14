@@ -28,6 +28,6 @@ vmac=`perl -e 'print sprintf("00:16:3e:%2.2x:%2.2x:%2.2x", rand()*255, rand()*25
 ip netns exec ${pid} ip link set $3 address $vmac
 ip netns exec ${pid} ip link set $3 mtu $mtu
 ip netns exec ${pid} ip addr add $4 dev $3
-if [ $5 == "gw" ] ; then
+if [ "$5" == "gw" ] ; then
   ip netns exec ${pid} ip route add default via $gateway
 fi
