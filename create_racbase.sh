@@ -113,8 +113,8 @@ EOF
 #enable non root user ping
 chmod u+s /usr/bin/ping
 
-#cp /etc/hosts /tmp/hosts
-#sed -i.bak 's:/etc/hosts:/tmp/hosts:g' /lib64/libnss_files.so.2
+cp /etc/hosts /tmp/hosts
+sed -i.bak 's:/etc/hosts:/tmp/hosts:g' /lib64/libnss_files.so.2
 cat << EOT >> /tmp/hosts
 192.168.0.101 node1.public node1
 192.168.0.102 node2.public node2
