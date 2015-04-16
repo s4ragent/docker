@@ -36,7 +36,8 @@ getvxlanconf()
   #get myip 
   myip=`$ipcmd addr show $rdev | grep 'inet ' | awk -F '[/ ]' '{print $6}'` 
   #get broadcast addr 
-  eval `ipcalc -s -b $addr`
+  #eval `ipcalc -s -b $addr`
+  BROADCAST=`get_broadcast $addr`
 }
 
 init_vxlan(){
@@ -109,6 +110,34 @@ exe_log(){
          date >>$LOG
          echo $1 >>$LOG
          $1 >>$LOG 2>&1
+}
+
+#http://program.station.ez-net.jp/special/linux-sh/network/get_network.asp
+get_broadcast(){
+        BROADCAST=""
+        IPADDR=`echo $1 | awk -F "/" '{print $1}'`
+        MASKBIT=`echo $1 | awk -F "/" '{print $2}'`
+
+        ip_array=(`echo "$IPADDR" | sed -e "s/\./ /g"`)
+        ip_index=0
+
+        while [ $ip_index -lt 4 ]
+        do
+                if [ "$MASKBIT" -lt 8 ]
+                then
+                        MASK=$((256-2**$((8-MASKBIT))))
+                        MASK_REV=$((~MASK%256+256))
+                        MASKBIT=0
+                else
+                        MASK=255
+                        MASK_REV=0
+                        MASKBIT=$((MASKBIT - 8))
+                fi
+                BROADCAST="${BROADCAST}.$((ip_array[ip_index] | MASK_REV))"
+                ip_index=$((ip_index + 1))
+        done
+        BROADCAST=`echo $BROADCAST | sed -e "s/^\.//"`
+        echo $BROADCAST
 }
 
 case "$1" in
