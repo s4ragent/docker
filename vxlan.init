@@ -37,7 +37,7 @@ getvxlanconf()
   myip=`$ipcmd addr show $rdev | grep 'inet ' | awk -F '[/ ]' '{print $6}'` 
   #get broadcast addr 
   #eval `ipcalc -s -b $addr`
-  BROADCAST=`get_broadcast $addr`
+  BROADCAST=`getbroadcast $addr`
 }
 
 init_vxlan(){
@@ -113,7 +113,7 @@ exe_log(){
 }
 
 #http://program.station.ez-net.jp/special/linux-sh/network/get_network.asp
-get_broadcast(){
+getbroadcast(){
         BROADCAST=""
         IPADDR=`echo $1 | awk -F "/" '{print $1}'`
         MASKBIT=`echo $1 | awk -F "/" '{print $2}'`
