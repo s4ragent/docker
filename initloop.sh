@@ -1,5 +1,5 @@
 #!/bin/bash
-for i in {2..63}; 
+for i in $(seq 2 63);
 do
   if [ -e /dev/loop$i ]; then 
     continue
