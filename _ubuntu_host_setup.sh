@@ -27,6 +27,8 @@ Address = 192.168.100.1${1}/24
 Mode=bridge
 EOF
 
+/etc/init.d/vxlan start
+
 cat >>/etc/sysctl.conf <<EOF
 # oracle-rdbms-server-12cR1-preinstall setting for net.core.rmem_default is 262144
 net.core.rmem_default = 262144
