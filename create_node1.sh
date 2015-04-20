@@ -13,7 +13,7 @@ sleep 35
 docker exec -ti node1 /bin/bash -c 'mkdir /u01'
 docker exec -ti node1 /bin/bash -c 'echo "/dev/loop31 /u01    ext4    defaults   0 0" >> /etc/fstab'
 docker exec -ti node1 /bin/bash -c 'mount -a'
-docker exec -ti node1 /bin/bash -c 'cat >/root/create_oraclehome.sh' <./create_oraclehome.sh
+docker exec -i node1 /bin/bash -c 'cat >/root/create_oraclehome.sh' <./create_oraclehome.sh
 docker exec -ti node1 sh /root/create_oraclehome.sh
 #docker exec -i node1 /bin/bash -c 'cat >/root/nfsclient.sh' <./nfsclient.sh
 #docker exec -i node1 sh /root/nfsclient.sh
