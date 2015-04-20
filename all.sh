@@ -9,6 +9,9 @@ docker rmi test:racbase
 losetup -d /dev/loop30
 losetup -d /dev/loop31
 losetup -d /dev/loop32
+rm -rf /docker/share/share.img
+rm -rf /docker/node1/orahome.img
+rm -rf /docker/node2/orahome.img
 bash -x ./create_shareddisk.sh
 bash -x ./create_basecontainer.sh
 bash -x ./create_node1.sh
