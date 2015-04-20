@@ -1,4 +1,5 @@
 #wget -qO- https://get.docker.com/ | sh
+apt-get -y update
 apt-get -y install bridge-utils qemu-utils
 
 install -o root -g root -m 755 vxlan.init /etc/init.d/vxlan
