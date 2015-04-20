@@ -6,6 +6,10 @@ docker rm node1
 docker rm node2
 docker rm racbase
 docker rmi test:racbase
+losetup -d /dev/loop30
+losetup -d /dev/loop31
+losetup -d /dev/loop32
+bash -x ./create_shared disk.sh
 bash -x ./create_basecontainer.sh
 bash -x ./create_node1.sh
 bash -x ./create_node2.sh
