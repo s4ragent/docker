@@ -115,10 +115,9 @@ rm -rf /work
 #enable non root user ping
 chmod u+s /usr/bin/ping
 
-mkdir -p /var/tmp
-cp /etc/hosts /var/tmp/hosts
-sed -i.bak 's:/etc/hosts:/var/tmp/hosts:g' /lib64/libnss_files.so.2
-cat << EOT >> /var/tmp/hosts
+cp /etc/hosts /tmp/hosts
+sed -i.bak 's:/etc/hosts:/tmp/hosts:g' /lib64/libnss_files.so.2
+cat << EOT >> /tmp/hosts
 192.168.0.31 scan.public scan
 192.168.0.32 scan.public scan
 192.168.0.33 scan.public scan
@@ -127,10 +126,10 @@ EOT
 for i in `seq 1 64`; do
   IP=`expr 100 + $i`
   nodename="node"`printf "%.3d" $i`
-  echo "192.168.0.${IP} $nodename".public" $nodename" >> /var/tmp/hosts
+  echo "192.168.0.${IP} $nodename".public" $nodename" >> /tmp/hosts
   VIP=`expr 200 + $i`
   vipnodename=$nodename"-vip"
-  echo "192.168.0.${VIP} $vipnodename".public" $vipnodename" >> /var/tmp/hosts
+  echo "192.168.0.${VIP} $vipnodename".public" $vipnodename" >> /tmp/hosts
 done
 
 #http://qiita.com/inokappa/items/89ab9b7f39bc1ad2f197
@@ -141,7 +140,7 @@ listen-address=127.0.0.1
 resolv-file=/etc/resolv.dnsmasq.conf
 conf-dir=/etc/dnsmasq.d
 user=root
-addn-hosts=/var/tmp/hosts
+addn-hosts=/tmp/hosts
 EOT
 
 cat << EOT >> /etc/resolv.dnsmasq.conf
