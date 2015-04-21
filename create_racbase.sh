@@ -9,7 +9,7 @@ ORAINVENTORY=/u01/app/oraInventory
 MOUNT_PATH=/u01
 MEDIA_PATH=/media
 
-yum --enablerepo=ol7_addons install oracle-rdbms-server-12cR1-preinstall tar net-tools sleep expect -y
+yum --enablerepo=ol7_addons install oracle-rdbms-server-12cR1-preinstall tar net-tools expect dnsmasq bind-utils -y
 yum reinstall -y glibc-common
 
 ###delete user ###
@@ -134,7 +134,7 @@ for i in `seq 1 64`; do
 done
 
 #http://qiita.com/inokappa/items/89ab9b7f39bc1ad2f197
-yum -y install dnsmasq bind-utils
+#yum -y install dnsmasq bind-utils
 
 cat << EOT >> /etc/dnsmasq.conf
 listen-address=127.0.0.1
